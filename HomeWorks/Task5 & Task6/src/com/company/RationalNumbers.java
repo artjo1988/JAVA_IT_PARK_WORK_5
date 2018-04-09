@@ -17,6 +17,14 @@ public class RationalNumbers {
         this.b = b;
     }
 
+    public int getA() {
+        return a;
+    }
+
+    public int getB() {
+        return b;
+    }
+
     public void show(){
         System.out.println(this.a + "/" + this.b);
     }
@@ -25,18 +33,30 @@ public class RationalNumbers {
         return (double)this.a /this.b;
     }
 
-    public int nod (int x, int y){
-        if(x == y) return x;
-        while ( x != 0 || y != 0){
-            if (x > y) x = x % y;
-            else y= y % x;
+    public int nod (int a, int b){
+        if(a == b) return a;
+        if(a > b) {
+            while (b != 0) {
+                int tmp = a % b;
+                a = b;
+                b = tmp;
+            }
+            return a;
         }
-        return (a + b);
+        if(b > a) {
+            while (a != 0) {
+                int tmp = b % a;
+                b = a;
+                a = tmp;
+            }
+            return b;
+        }
+        return 0;
     }
 
     public void optimaze(){
         this.a = this.a / nod(this.a , this.b);
         this.b = this.b / nod(this.a , this.b);
-        System.out.println(toDouble());
+        show();
     }
 }

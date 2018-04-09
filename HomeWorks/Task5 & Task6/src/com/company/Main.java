@@ -12,7 +12,7 @@ public class Main {
         number1.show();
         System.out.println(number1.toDouble());
 
-        RationalNumbers number2 = new RationalNumbers();
+        RationalNumbers number2 = new RationalNumbers(10,2);
         System.out.println("НОД: " + number2.nod(10, 2 ));
         number2.optimaze();
     }
