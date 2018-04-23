@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static String fileNameId = "id.txt";
-    public static String fileNameRepository = "repository.txt";
+    public static String fileId = "id.txt";
+    public static String fileRepository = "repository.txt";
 
     public static void main(String[] args) {
         new UtilImplCrudAndFileWriter().create(new User("Maks","Mirov", LocalDate.now()));

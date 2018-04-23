@@ -18,7 +18,7 @@ public class UtilImplCrudAndFileWriter implements Crud {
     @Override
     public void find(int id) {
         try {
-            Scanner scanner = new Scanner(new FileReader(Main.fileNameRepository));
+            Scanner scanner = new Scanner(new FileReader(Main.fileRepository));
             while(scanner.hasNextLine()){
                 String s = scanner.nextLine();
                 String arr [] = s.split("\\s");
@@ -35,9 +35,9 @@ public class UtilImplCrudAndFileWriter implements Crud {
     @Override
     public void create(User user) {
         try {
-            Writer writer = new FileWriter(Main.fileNameRepository, true);
-            writer.write(UtilImplIdGenerator.getCurrentInstance() + user.toString());
+            Writer writer = new FileWriter(Main.fileRepository, true);
             new UtilImplIdGenerator();
+            writer.write(UtilImplIdGenerator.getCurrentInstance() + user.toString());
             writer.close();
         } catch (IOException e) {
             throw new IllegalStateException(e);
@@ -47,13 +47,13 @@ public class UtilImplCrudAndFileWriter implements Crud {
     @Override
     public void update(int id, User user) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(Main.fileNameRepository));
+            BufferedReader reader = new BufferedReader(new FileReader(Main.fileRepository));
             int n = 0;
             while(reader.ready()){
                 n++;
             }
             reader.close();
-            reader = new BufferedReader(new FileReader(Main.fileNameRepository));
+            reader = new BufferedReader(new FileReader(Main.fileRepository));
             String arrStr [] = new String [n];
             while(reader.ready()){
                 String s = reader.readLine();
@@ -65,7 +65,7 @@ public class UtilImplCrudAndFileWriter implements Crud {
                 }
             }
             reader.close();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(Main.fileNameRepository));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(Main.fileRepository));
             for(String x : arrStr) writer.write(x);
             writer.close();
             new UtilImplIdGenerator().setChangeId();
@@ -78,13 +78,13 @@ public class UtilImplCrudAndFileWriter implements Crud {
     @Override
     public void delete(int id) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(Main.fileNameRepository));
+            BufferedReader reader = new BufferedReader(new FileReader(Main.fileRepository));
             int n = 0;
             while(reader.ready()){
                 n++;
             }
             reader.close();
-            reader = new BufferedReader(new FileReader(Main.fileNameRepository));
+            reader = new BufferedReader(new FileReader(Main.fileRepository));
             String arrStr [] = new String [n -1];
             while(reader.ready()){
                 String s = reader.readLine();
@@ -96,7 +96,7 @@ public class UtilImplCrudAndFileWriter implements Crud {
                 }
             }
             reader.close();
-            BufferedWriter writer = new BufferedWriter(new FileWriter(Main.fileNameRepository));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(Main.fileRepository));
             for(String x : arrStr) writer.write(x);
             writer.close();
             new UtilImplIdGenerator().setChangeId();
@@ -109,13 +109,13 @@ public class UtilImplCrudAndFileWriter implements Crud {
     @Override
     public User[] finfAll() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(Main.fileNameRepository));
+            BufferedReader reader = new BufferedReader(new FileReader(Main.fileRepository));
             int n = 0;
             while(reader.ready()){
                 n++;
             }
             reader.close();
-            reader = new BufferedReader(new FileReader(Main.fileNameRepository));
+            reader = new BufferedReader(new FileReader(Main.fileRepository));
             User arrUsers [] = new User [n];
             while(reader.ready()){
                 String s = reader.readLine();

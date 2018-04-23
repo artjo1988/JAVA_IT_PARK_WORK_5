@@ -27,7 +27,7 @@ public class UtilImplIdGenerator implements IdGenerator {
     @Override
     public void writeId(int newId) {
         try {
-             BufferedWriter writer = new BufferedWriter(new FileWriter(Main.fileNameId));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(Main.fileId));
              writer.write(String.valueOf(newId));
              writer.close();
         } catch (IOException e) {
@@ -38,16 +38,17 @@ public class UtilImplIdGenerator implements IdGenerator {
 
     @Override
     public int getId() {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(Main.fileNameId));
-            reader.close();
-            int id = Integer.parseInt(reader.readLine());
-            return ++id;
-        } catch (FileNotFoundException e) {
-            throw new IllegalStateException(e);
-        } catch (IOException e) {
-            throw new IllegalStateException(e);
-        }
+//        try {
+//            BufferedReader reader = new BufferedReader(new FileReader(Main.fileId));
+//            reader.close();
+//            int id = Integer.parseInt(reader.readLine());
+//            return ++id;
+//        } catch (FileNotFoundException e) {
+//            throw new IllegalStateException(e);
+//        } catch (IOException e) {
+//            throw new IllegalStateException(e);
+//        }
+        return 2;
     }
 
     @Override
